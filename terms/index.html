@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOX DZ — سياسة الخصوصية والشروط</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #02040a;
+            color: #f0f0f0;
+            font-family: 'Cairo', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .tab-btn {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(8, 16, 32, 0.4);
+            padding: 1rem;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .tab-btn.active {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+        }
+        .policy-content {
+            background: rgba(8, 16, 32, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 24px;
+            padding: 2rem;
+        }
+        .policy-content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            color: white;
+        }
+        .policy-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem;
+            color: #3b82f6;
+        }
+        .policy-content p {
+            color: #a0aec0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .policy-content ul {
+            list-style: disc;
+            padding-right: 1.5rem;
+            margin: 1rem 0;
+            color: #a0aec0;
+        }
+        .policy-content li {
+            margin-bottom: 0.5rem;
+        }
+        .policy-content a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .policy-content a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#3b82f6] selection:text-white relative overflow-x-hidden">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-20" style="background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px;"></div>
+    <div class="fixed inset-0 z-0 pointer-events-none" style="background: radial-gradient(ellipse at center, transparent 40%, #02040a 100%);"></div>
+    <div class="fixed inset-0 z-[9000] pointer-events-none opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E'); background-repeat: repeat; background-size: 180px;"></div>
+
+    <!-- Scroll Progress -->
+    <div id="progressBar" class="fixed top-0 right-0 h-[2px] bg-[#3b82f6] z-[9999] shadow-[0_0_12px_rgba(59,130,246,0.6)] transition-all duration-75" style="width: 0%;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-6 md:px-12 py-5 bg-[#02040a]/80 backdrop-blur-xl border-b border-white/[0.04]">
+        <a href="/" class="font-['Syne',sans-serif] text-lg font-bold tracking-tighter uppercase">
+            NOX<span class="text-[#3b82f6]">DZ.</span>
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            <a href="/#about" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">من نحن</a>
+            <a href="/#services" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">خدماتنا</a>
+            <a href="/#features" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">مميزاتنا</a>
+            <a href="/#payment" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">طرق الدفع</a>
+        </div>
+        <a href="/login/" class="hidden md:flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#3b82f6]/20 border border-[#3b82f6] rounded-full hover:bg-[#3b82f6] hover:text-white transition-all duration-300">
+            <iconify-icon icon="solar:user-linear" stroke-width="1.5" class="text-sm"></iconify-icon>
+            تسجيل الدخول
+        </a>
+        <!-- Mobile back arrow -->
+        <a href="/" class="md:hidden flex items-center justify-center w-8 h-8 text-white hover:text-[#3b82f6] transition-colors" aria-label="العودة للرئيسية">
+            <iconify-icon icon="solar:arrow-left-linear" width="24" height="24"></iconify-icon>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="relative z-10 pt-32 pb-20 px-6 max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 text-[0.65rem] font-semibold tracking-widest uppercase text-[#3b82f6] mb-6 px-5 py-2.5 rounded-full bg-white/[0.02] border border-[#3b82f6]/20 backdrop-blur-md">
+                المعلومات القانونية
+            </div>
+            <h1 class="font-['Syne',sans-serif] text-5xl md:text-6xl font-bold tracking-tighter text-white mb-6">سياسة الخصوصية والشروط</h1>
+            <p class="text-[#a0aec0] max-w-2xl mx-auto text-lg">نحن في NOX DZ نلتزم بحماية خصوصيتك وتوضيح حقوقك. اختر القسم المناسب لقراءة المزيد.</p>
+        </div>
+
+        <!-- Tabs for Privacy and Terms -->
+        <div class="grid grid-cols-2 gap-4 mb-10">
+            <div id="tab-privacy" class="tab-btn active" onclick="switchTab('privacy')">سياسة الخصوصية</div>
+            <div id="tab-terms" class="tab-btn" onclick="switchTab('terms')">الشروط والأحكام</div>
+        </div>
+
+        <!-- Privacy Content (emoji removed) -->
+        <div id="privacy-content" class="policy-content">
+            <div class="text-sm text-white/40 mb-4">آخر تحديث: 14 مارس 2026</div>
+            <h2>سياسة الخصوصية – NOX DZ</h2>
+            <p>نحن في NOX DZ نلتزم بحماية خصوصيتك. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك الشخصية عند استخدامك لموقعنا وخدماتنا.</p>
+            
+            <h3>المعلومات التي نجمعها:</h3>
+            <ul>
+                <li><strong>معلومات الاتصال:</strong> مثل الاسم، البريد الإلكتروني، رقم الهاتف، عند ملء نماذج التواصل أو إنشاء حساب.</li>
+                <li><strong>معلومات المشروع:</strong> التفاصيل التي تشاركها معنا بخصوص مشروعك لتمكيننا من تقديم الخدمة المناسبة.</li>
+                <li><strong>بيانات الاستخدام:</strong> معلومات حول كيفية تفاعلك مع موقعنا (مثل الصفحات التي تزورها) باستخدام ملفات تعريف الارتباط (Cookies) لتحسين تجربتك.</li>
+            </ul>
+
+            <h3>كيف نستخدم معلوماتك:</h3>
+            <ul>
+                <li>للرد على استفساراتك وتقديم العروض المناسبة.</li>
+                <li>لتحسين خدماتنا وتطوير موقعنا.</li>
+                <li>لإرسال تحديثات وعروض تسويقية (يمكنك إلغاء الاشتراك في أي وقت).</li>
+                <li>للامتثال للالتزامات القانونية.</li>
+            </ul>
+
+            <h3>حماية المعلومات:</h3>
+            <p>نستخدم إجراءات أمنية مشددة لحماية بياناتك من الوصول غير المصرح به أو التعديل أو الإفصاح.</p>
+
+            <h3>مشاركة المعلومات:</h3>
+            <p>لا نقوم ببيع أو تأجير بياناتك الشخصية لأطراف ثالثة. قد نشارك معلومات محدودة مع شركاء موثوقين (مثل مقدمي خدمات الاستضافة) لغرض تشغيل الموقع، وهم ملتزمون بالحفاظ على سريتها.</p>
+
+            <h3>حقوقك:</h3>
+            <p>لديك الحق في طلب الوصول إلى بياناتك الشخصية أو تصحيحها أو حذفها. للتواصل بخصوص ذلك، يرجى مراسلتنا على: <a href="mailto:privacy@noxdz.com">privacy@noxdz.com</a></p>
+
+            <h3>التغييرات على السياسة:</h3>
+            <p>قد نقوم بتحديث هذه السياسة من وقت لآخر، وسنقوم بنشر النسخة المحدثة على هذه الصفحة مع تاريخ آخر تحديث.</p>
+            <p class="mt-6">آخر تحديث: 14 مارس 2026</p>
+        </div>
+
+        <!-- Terms Content (emoji removed) -->
+        <div id="terms-content" class="policy-content hidden">
+            <div class="text-sm text-white/40 mb-4">آخر تحديث: 14 مارس 2026</div>
+            <h2>الشروط والأحكام – NOX DZ</h2>
+            <p>باستخدامك لموقع NOX DZ وخدماتنا، فإنك توافق على الالتزام بهذه الشروط. يرجى قراءتها بعناية.</p>
+
+            <h3>1. الخدمات المقدمة:</h3>
+            <p>تقدم NOX DZ خدمات تصميم وتطوير المواقع الإلكترونية، تصميم صفحات الهبوط، والتصاميم الجرافيكية. سيتم الاتفاق على تفاصيل كل مشروع عبر عقد منفصل أو محادثات رسمية.</p>
+
+            <h3>2. الملكية الفكرية:</h3>
+            <ul>
+                <li>جميع التصاميم والكود المقدم من قبلنا يظل ملكيتنا الفكرية حتى يتم استلام الدفعة الكاملة، وعندها تنتقل الملكية للعميل وفقاً للاتفاق.</li>
+                <li>لا يجوز إعادة بيع أو توزيع أي من أعمالنا دون إذن خطي.</li>
+            </ul>
+
+            <h3>3. التزامات العميل:</h3>
+            <ul>
+                <li>تقديم جميع المواد المطلوبة (نصوص، صور، شعارات) في الوقت المحدد لضمان سير المشروع.</li>
+                <li>مراجعة الأعمال المقدمة وإبداء الملاحظات خلال الإطار الزمني المتفق عليه.</li>
+                <li>الالتزام بالمواعيد المحددة للدفع.</li>
+            </ul>
+
+            <h3>4. سياسة الإلغاء والاسترداد:</h3>
+            <ul>
+                <li>في حال الرغبة في إلغاء المشروع قبل البدء، يتم استرداد المبلغ بالكامل.</li>
+                <li>بعد البدء في العمل، لا يمكن استرداد المبالغ المدفوعة مقابل الأعمال المنجزة. يتم التعامل مع كل حالة على حدة وفقاً لمرحلة المشروع.</li>
+            </ul>
+
+            <h3>5. المحتوى غير القانوني:</h3>
+            <p>نحن لا نقدم خدمات لأي محتوى ينتهك القوانين المحلية أو الدولية، أو يشجع على الكراهية أو العنف أو انتهاك حقوق الملكية الفكرية.</p>
+
+            <h3>6. تحديثات وصيانة:</h3>
+            <p>قد تشمل الخدمة فترة دعم مجاني (يتم تحديدها في العقد). بعد انتهائها، يمكن الاتفاق على عقود صيانة منفصلة.</p>
+
+            <h3>7. تحديد المسؤولية:</h3>
+            <p>لا تتحمل NOX DZ مسؤولية أي أضرار غير مباشرة ناتجة عن استخدام الموقع أو الخدمات، مثل فقدان الأرباح أو توقف العمل.</p>
+
+            <h3>8. القانون الواجب التطبيق:</h3>
+            <p>تخضع هذه الشروط للقوانين الجزائرية. في حالة وجود نزاع، نسعى أولاً للحلول الودية.</p>
+
+            <h3>9. التواصل:</h3>
+            <p>للاستفسارات المتعلقة بهذه الشروط، يرجى التواصل عبر: <a href="mailto:legal@noxdz.com">legal@noxdz.com</a></p>
+
+            <p class="mt-6">آخر تحديث: 14 مارس 2026</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-[#02040a] border-t border-[#1e3a8a]/30 pt-16 pb-8 px-6">
+        <div class="max-w-6xl mx-auto text-center text-white/40 text-sm">
+            © 2024 NOX DZ. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        document.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        });
+
+        // Tab switching
+        function switchTab(tab) {
+            document.getElementById('tab-privacy').classList.remove('active');
+            document.getElementById('tab-terms').classList.remove('active');
+            if (tab === 'privacy') {
+                document.getElementById('tab-privacy').classList.add('active');
+                document.getElementById('privacy-content').classList.remove('hidden');
+                document.getElementById('terms-content').classList.add('hidden');
+            } else {
+                document.getElementById('tab-terms').classList.add('active');
+                document.getElementById('terms-content').classList.remove('hidden');
+                document.getElementById('privacy-content').classList.add('hidden');
+            }
+        }
+
+        // Ensure correct initial state
+        window.onload = function() {
+            document.getElementById('privacy-content').classList.remove('hidden');
+            document.getElementById('terms-content').classList.add('hidden');
+        };
+    </script>
+</body>
+</html>
