@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOX DZ — من نحن</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #02040a;
+            color: #f0f0f0;
+            font-family: 'Cairo', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .value-card {
+            background: rgba(8, 16, 32, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .value-card:hover {
+            border-color: #3b82f6;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#3b82f6] selection:text-white relative overflow-x-hidden">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-20" style="background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px;"></div>
+    <div class="fixed inset-0 z-0 pointer-events-none" style="background: radial-gradient(ellipse at center, transparent 40%, #02040a 100%);"></div>
+    <div class="fixed inset-0 z-[9000] pointer-events-none opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E'); background-repeat: repeat; background-size: 180px;"></div>
+
+    <!-- Scroll Progress (optional) -->
+    <div id="progressBar" class="fixed top-0 right-0 h-[2px] bg-[#3b82f6] z-[9999] shadow-[0_0_12px_rgba(59,130,246,0.6)] transition-all duration-75" style="width: 0%;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-6 md:px-12 py-5 bg-[#02040a]/80 backdrop-blur-xl border-b border-white/[0.04]">
+        <a href="/" class="font-['Syne',sans-serif] text-lg font-bold tracking-tighter uppercase">
+            NOX<span class="text-[#3b82f6]">DZ.</span>
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            <a href="/#about" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">من نحن</a>
+            <a href="/#services" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">خدماتنا</a>
+            <a href="/#features" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">مميزاتنا</a>
+            <a href="/#payment" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">طرق الدفع</a>
+        </div>
+        <a href="/login/" class="hidden md:flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#3b82f6]/20 border border-[#3b82f6] rounded-full hover:bg-[#3b82f6] hover:text-white transition-all duration-300">
+            <iconify-icon icon="solar:user-linear" stroke-width="1.5" class="text-sm"></iconify-icon>
+            تسجيل الدخول
+        </a>
+        <!-- Mobile back arrow -->
+        <a href="/" class="md:hidden flex items-center justify-center w-8 h-8 text-white hover:text-[#3b82f6] transition-colors" aria-label="العودة للرئيسية">
+            <iconify-icon icon="solar:arrow-left-linear" width="24" height="24"></iconify-icon>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="relative z-10 pt-32 pb-20 px-6 max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 text-[0.65rem] font-semibold tracking-widest uppercase text-[#3b82f6] mb-6 px-5 py-2.5 rounded-full bg-white/[0.02] border border-[#3b82f6]/20 backdrop-blur-md">
+                تعرف علينا
+            </div>
+            <h1 class="font-['Syne',sans-serif] text-5xl md:text-6xl font-bold tracking-tighter text-white mb-6">من نحن</h1>
+            <p class="text-[#a0aec0] max-w-3xl mx-auto text-lg">نحن فريق من المبدعين والمطورين الجزائريين، نجمع بين الشغف التقني والخبرة الإبداعية لنقدم حلولاً رقمية استثنائية.</p>
+        </div>
+
+        <!-- Our Story / Vision & Mission -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+            <div class="glass-panel p-8 md:p-10">
+                <h2 class="text-3xl font-bold text-white mb-4 flex items-center gap-2">
+                    <span class="w-1 h-8 bg-[#3b82f6] rounded-full"></span>
+                    رؤيتنا
+                </h2>
+                <p class="text-[#a0aec0] leading-relaxed text-lg">
+                    أن نكون الخيار الأول للشركات والأفراد في العالم العربي لبناء هويتهم الرقمية، ونصنع فرقاً حقيقياً في مشهد التكنولوجيا الجزائري.
+                </p>
+            </div>
+            <div class="glass-panel p-8 md:p-10">
+                <h2 class="text-3xl font-bold text-white mb-4 flex items-center gap-2">
+                    <span class="w-1 h-8 bg-[#3b82f6] rounded-full"></span>
+                    رسالتنا
+                </h2>
+                <p class="text-[#a0aec0] leading-relaxed text-lg">
+                    تمكين عملائنا من خلال حلول مبتكرة وسهلة الاستخدام، بجودة عالمية وأسعار محلية، مع التزام تام بالدعم المستمر وبناء علاقات طويلة الأمد.
+                </p>
+            </div>
+        </div>
+
+        <!-- Values Section (تم الإبقاء عليها) -->
+        <div class="mb-20">
+            <h2 class="text-4xl font-bold text-white mb-12 text-center">قيمنا</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="value-card">
+                    <iconify-icon icon="solar:shield-star-linear" width="48" height="48" class="text-[#3b82f6] mb-4"></iconify-icon>
+                    <h3 class="text-xl font-bold text-white mb-2">الجودة</h3>
+                    <p class="text-[#a0aec0]">نقدم أعلى معايير الجودة في كل مشروع، ولا نرضى بأقل من الإتقان.</p>
+                </div>
+                <div class="value-card">
+                    <iconify-icon icon="solar:handshake-linear" width="48" height="48" class="text-[#3b82f6] mb-4"></iconify-icon>
+                    <h3 class="text-xl font-bold text-white mb-2">الثقة</h3>
+                    <p class="text-[#a0aec0]">نبني علاقات طويلة الأمد مع عملائنا على أساس الشفافية والصدق.</p>
+                </div>
+                <div class="value-card">
+                    <iconify-icon icon="solar:lightbulb-linear" width="48" height="48" class="text-[#3b82f6] mb-4"></iconify-icon>
+                    <h3 class="text-xl font-bold text-white mb-2">الإبداع</h3>
+                    <p class="text-[#a0aec0]">نفكر خارج الصندوق لنقدم لك حلولاً فريدة ومبتكرة تناسب هويتك.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- تم حذف قسم الفريق والإحصائيات بالكامل -->
+        
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-[#02040a] border-t border-[#1e3a8a]/30 pt-16 pb-8 px-6">
+        <div class="max-w-6xl mx-auto text-center text-white/40 text-sm">
+            © 2024 NOX DZ. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        document.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        });
+    </script>
+</body>
+</html>
