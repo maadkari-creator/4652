@@ -1,5 +1,42 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+<html lang="ar" dir="rtl" class="scroll-smooth"><script>
+    (function() {
+        // حساب المسار الأساسي (مثلاً /4652/) من الرابط الحالي
+        var path = window.location.pathname;
+        var baseHref = '/';
+        
+        // التأكد من أننا نأخذ المجلد الأول فقط إذا كان موجوداً
+        var match = path.match(/^\/([^\/]+)/);
+        if (match) {
+            baseHref = '/' + match[1] + '/';
+        }
+        
+        // إنشاء وسم base
+        var base = document.createElement('base');
+        base.href = baseHref;
+        document.head.appendChild(base);
+        
+        // بعد إنشاء base، نقوم بتصحيح أي روابط قد تكون بدأت بـ "/"
+        // هذا السكربت سيعيد كتابة جميع الروابط الداخلية التي تبدأ بـ "/"
+        window.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('a[href^="/"]');
+            links.forEach(function(link) {
+                var href = link.getAttribute('href');
+                // نتأكد أن الرابط ليس رابطاً خارجياً (يبدأ بـ // أو http)
+                if (!href.startsWith('//') && !href.startsWith('http')) {
+                    // إذا كان الرابط هو "/" فقط نتركه كـ "./" أو نعدله للمجلد الرئيسي
+                    if (href === '/') {
+                        link.href = baseHref;
+                    } else {
+                        // إزالة أول "/" وتحويل الرابط إلى نسبي
+                        link.href = href.substring(1);
+                    }
+                }
+            });
+        });
+    })();
+</script>
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
