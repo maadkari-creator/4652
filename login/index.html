@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+  <script>
+    (function() {
+        // حساب المسار الأساسي (مثلاً /4652/) من الرابط الحالي
+        var path = window.location.pathname;
+        var baseHref = '/';
+        
+        // التأكد من أننا نأخذ المجلد الأول فقط إذا كان موجوداً
+        var match = path.match(/^\/([^\/]+)/);
+        if (match) {
+            baseHref = '/' + match[1] + '/';
+        }
+        
+        // إنشاء وسم base
+        var base = document.createElement('base');
+        base.href = baseHref;
+        document.head.appendChild(base);
+        
+        // بعد إنشاء base، نقوم بتصحيح أي روابط قد تكون بدأت بـ "/"
+        // هذا السكربت سيعيد كتابة جميع الروابط الداخلية التي تبدأ بـ "/"
+        window.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('a[href^="/"]');
+            links.forEach(function(link) {
+                var href = link.getAttribute('href');
+                // نتأكد أن الرابط ليس رابطاً خارجياً (يبدأ بـ // أو http)
+                if (!href.startsWith('//') && !href.startsWith('http')) {
+                    // إذا كان الرابط هو "/" فقط نتركه كـ "./" أو نعدله للمجلد الرئيسي
+                    if (href === '/') {
+                        link.href = baseHref;
+                    } else {
+                        // إزالة أول "/" وتحويل الرابط إلى نسبي
+                        link.href = href.substring(1);
+                    }
+                }
+            });
+        });
+    })();
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOX DZ — تسجيل الدخول وإنشاء حساب</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #02040a;
+            color: #f0f0f0;
+            font-family: 'Cairo', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .tab-btn {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(8, 16, 32, 0.4);
+            padding: 1rem;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .tab-btn.active {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+        }
+        .input-field {
+            background: rgba(8, 16, 32, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 1rem 1rem 1rem 3rem;
+            width: 100%;
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .input-field::placeholder {
+            color: #4a5568;
+        }
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #3b82f6;
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-radius: 40px;
+            width: 100%;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+        .btn-primary:hover {
+            background: white;
+            color: black;
+            transform: translateY(-2px);
+        }
+        .btn-google {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 40px;
+            padding: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        .btn-google:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#3b82f6] selection:text-white relative overflow-x-hidden">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-20" style="background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px;"></div>
+    <div class="fixed inset-0 z-0 pointer-events-none" style="background: radial-gradient(ellipse at center, transparent 40%, #02040a 100%);"></div>
+    <div class="fixed inset-0 z-[9000] pointer-events-none opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E'); background-repeat: repeat; background-size: 180px;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-6 md:px-12 py-5 bg-[#02040a]/80 backdrop-blur-xl border-b border-white/[0.04]">
+        <a href="/" class="font-['Syne',sans-serif] text-lg font-bold tracking-tighter uppercase">
+            NOX<span class="text-[#3b82f6]">DZ.</span>
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            <a href="/#about" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">من نحن</a>
+            <a href="/#services" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">خدماتنا</a>
+            <a href="/#features" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">مميزاتنا</a>
+            <a href="/#payment" class="text-xs font-medium text-[#888] hover:text-[#f0f0f0] transition-colors">طرق الدفع</a>
+        </div>
+        <!-- For desktop, we already have login button, but here we are on login page, so maybe just home -->
+        <a href="/" class="hidden md:flex items-center gap-2 text-xs font-semibold text-[#3b82f6] hover:opacity-70 transition-opacity">
+            <iconify-icon icon="solar:arrow-left-linear" stroke-width="1.5" class="text-sm"></iconify-icon>
+            العودة للرئيسية
+        </a>
+        <!-- Mobile back arrow -->
+        <a href="/" class="md:hidden flex items-center justify-center w-8 h-8 text-white hover:text-[#3b82f6] transition-colors" aria-label="العودة للرئيسية">
+            <iconify-icon icon="solar:arrow-left-linear" width="24" height="24"></iconify-icon>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="relative z-10 pt-32 pb-20 px-6 max-w-lg mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-2 text-[0.65rem] font-semibold tracking-widest uppercase text-[#3b82f6] mb-4 px-5 py-2.5 rounded-full bg-white/[0.02] border border-[#3b82f6]/20 backdrop-blur-md">
+                مرحباً بك
+            </div>
+            <h1 class="font-['Syne',sans-serif] text-4xl md:text-5xl font-bold tracking-tighter text-white mb-3">تسجيل الدخول</h1>
+            <p class="text-[#a0aec0]">أهلاً بعودتك أو أنشئ حساباً جديداً للبدء</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <div id="tab-login" class="tab-btn active" onclick="switchAuthTab('login')">تسجيل الدخول</div>
+            <div id="tab-signup" class="tab-btn" onclick="switchAuthTab('signup')">إنشاء حساب</div>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="glass-panel p-8">
+            <form class="space-y-5" onsubmit="handleLogin(event)">
+                <div class="relative">
+                    <iconify-icon icon="solar:letter-linear" class="input-icon"></iconify-icon>
+                    <input type="email" placeholder="البريد الإلكتروني" class="input-field pr-12" required>
+                </div>
+                <div class="relative">
+                    <iconify-icon icon="solar:lock-linear" class="input-icon"></iconify-icon>
+                    <input type="password" placeholder="كلمة المرور" class="input-field pr-12" required>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 accent-[#3b82f6] bg-transparent border-white/20">
+                        <span class="text-[#a0aec0]">تذكرني</span>
+                    </label>
+                    <a href="#" class="text-[#3b82f6] hover:underline">نسيت كلمة المرور؟</a>
+                </div>
+                <button type="submit" class="btn-primary mt-4">تسجيل الدخول</button>
+            </form>
+
+            <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-white/10"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-4 bg-transparent text-[#a0aec0]">أو الدخول باستخدام</span>
+                </div>
+            </div>
+
+            <button class="btn-google w-full" onclick="handleGoogleLogin()">
+                <iconify-icon icon="flat-color-icons:google" width="24" height="24"></iconify-icon>
+                <span>المتابعة بحساب Google</span>
+            </button>
+
+            <p class="text-center text-[#a0aec0] text-sm mt-6 md:hidden">
+                ليس لديك حساب؟
+                <a href="#" onclick="switchAuthTab('signup'); return false;" class="text-[#3b82f6] hover:underline">أنشئ حساباً</a>
+            </p>
+        </div>
+
+        <!-- Signup Form (hidden initially) -->
+        <div id="signup-form" class="glass-panel p-8 hidden">
+            <form class="space-y-5" onsubmit="handleSignup(event)">
+                <div class="relative">
+                    <iconify-icon icon="solar:user-linear" class="input-icon"></iconify-icon>
+                    <input type="text" placeholder="الاسم الكامل" class="input-field pr-12" required>
+                </div>
+                <div class="relative">
+                    <iconify-icon icon="solar:letter-linear" class="input-icon"></iconify-icon>
+                    <input type="email" placeholder="البريد الإلكتروني" class="input-field pr-12" required>
+                </div>
+                <div class="relative">
+                    <iconify-icon icon="solar:lock-linear" class="input-icon"></iconify-icon>
+                    <input type="password" id="signup-password" placeholder="كلمة المرور" class="input-field pr-12" required>
+                </div>
+                <div class="relative">
+                    <iconify-icon icon="solar:lock-linear" class="input-icon"></iconify-icon>
+                    <input type="password" id="signup-confirm" placeholder="تأكيد كلمة المرور" class="input-field pr-12" required>
+                </div>
+                <label class="flex items-center gap-2 cursor-pointer text-sm">
+                    <input type="checkbox" class="w-4 h-4 accent-[#3b82f6]" required>
+                    <span class="text-[#a0aec0]">أوافق على <a href="/terms/" class="text-[#3b82f6] hover:underline">الشروط والأحكام</a></span>
+                </label>
+                <button type="submit" class="btn-primary mt-4">إنشاء حساب</button>
+            </form>
+
+            <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-white/10"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-4 bg-transparent text-[#a0aec0]">أو التسجيل باستخدام</span>
+                </div>
+            </div>
+
+            <button class="btn-google w-full" onclick="handleGoogleLogin()">
+                <iconify-icon icon="flat-color-icons:google" width="24" height="24"></iconify-icon>
+                <span>المتابعة بحساب Google</span>
+            </button>
+
+            <p class="text-center text-[#a0aec0] text-sm mt-6 md:hidden">
+                لديك حساب بالفعل؟
+                <a href="#" onclick="switchAuthTab('login'); return false;" class="text-[#3b82f6] hover:underline">تسجيل الدخول</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-[#02040a] border-t border-[#1e3a8a]/30 pt-16 pb-8 px-6">
+        <div class="max-w-6xl mx-auto text-center text-white/40 text-sm">
+            © 2024 NOX DZ. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching
+        function switchAuthTab(tab) {
+            const loginTab = document.getElementById('tab-login');
+            const signupTab = document.getElementById('tab-signup');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const headerTitle = document.querySelector('h1');
+            const headerSub = document.querySelector('p');
+
+            if (tab === 'login') {
+                loginTab.classList.add('active');
+                signupTab.classList.remove('active');
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                headerTitle.textContent = 'تسجيل الدخول';
+                headerSub.textContent = 'أهلاً بعودتك';
+            } else {
+                signupTab.classList.add('active');
+                loginTab.classList.remove('active');
+                signupForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+                headerTitle.textContent = 'إنشاء حساب';
+                headerSub.textContent = 'ابدأ رحلتك معنا';
+            }
+        }
+
+        // Form handlers (simulate)
+        function handleLogin(e) {
+            e.preventDefault();
+            alert('تم تسجيل الدخول (محاكاة)');
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+            if (password !== confirm) {
+                alert('كلمة المرور غير متطابقة');
+                return;
+            }
+            alert('تم إنشاء الحساب (محاكاة)');
+        }
+
+        function handleGoogleLogin() {
+            alert('سيتم التوجيه إلى تسجيل الدخول بحساب Google (محاكاة)');
+        }
+
+        // Ensure correct initial state (login visible, signup hidden)
+        window.onload = function() {
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('tab-login').classList.add('active');
+            document.getElementById('tab-signup').classList.remove('active');
+        };
+    </script>
+</body>
+</html>
